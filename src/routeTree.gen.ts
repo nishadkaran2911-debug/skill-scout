@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssessmentRouteImport } from './routes/assessment'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DepartmentsRouteImport } from './routes/departments'
+import { Route as EmployeesRouteImport } from './routes/employees'
+import { Route as HeatmapRouteImport } from './routes/heatmap'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as RolesRouteImport } from './routes/roles'
+import { Route as SkillGapsRouteImport } from './routes/skill-gaps'
+import { Route as SkillsRouteImport } from './routes/skills'
+import { Route as TrainingRouteImport } from './routes/training'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssessmentRoute = AssessmentRouteImport.update({
+  id: '/assessment',
+  path: '/assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DepartmentsRoute = DepartmentsRouteImport.update({
+  id: '/departments',
+  path: '/departments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeesRoute = EmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeatmapRoute = HeatmapRouteImport.update({
+  id: '/heatmap',
+  path: '/heatmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RolesRoute = RolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillGapsRoute = SkillGapsRouteImport.update({
+  id: '/skill-gaps',
+  path: '/skill-gaps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillsRoute = SkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingRoute = TrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
+  '/dashboard': typeof DashboardRoute
+  '/departments': typeof DepartmentsRoute
+  '/employees': typeof EmployeesRoute
+  '/heatmap': typeof HeatmapRoute
+  '/reports': typeof ReportsRoute
+  '/reviews': typeof ReviewsRoute
+  '/roles': typeof RolesRoute
+  '/skill-gaps': typeof SkillGapsRoute
+  '/skills': typeof SkillsRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
+  '/dashboard': typeof DashboardRoute
+  '/departments': typeof DepartmentsRoute
+  '/employees': typeof EmployeesRoute
+  '/heatmap': typeof HeatmapRoute
+  '/reports': typeof ReportsRoute
+  '/reviews': typeof ReviewsRoute
+  '/roles': typeof RolesRoute
+  '/skill-gaps': typeof SkillGapsRoute
+  '/skills': typeof SkillsRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
+  '/dashboard': typeof DashboardRoute
+  '/departments': typeof DepartmentsRoute
+  '/employees': typeof EmployeesRoute
+  '/heatmap': typeof HeatmapRoute
+  '/reports': typeof ReportsRoute
+  '/reviews': typeof ReviewsRoute
+  '/roles': typeof RolesRoute
+  '/skill-gaps': typeof SkillGapsRoute
+  '/skills': typeof SkillsRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/assessment'
+    | '/dashboard'
+    | '/departments'
+    | '/employees'
+    | '/heatmap'
+    | '/reports'
+    | '/reviews'
+    | '/roles'
+    | '/skill-gaps'
+    | '/skills'
+    | '/training'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/assessment'
+    | '/dashboard'
+    | '/departments'
+    | '/employees'
+    | '/heatmap'
+    | '/reports'
+    | '/reviews'
+    | '/roles'
+    | '/skill-gaps'
+    | '/skills'
+    | '/training'
+  id:
+    | '__root__'
+    | '/'
+    | '/assessment'
+    | '/dashboard'
+    | '/departments'
+    | '/employees'
+    | '/heatmap'
+    | '/reports'
+    | '/reviews'
+    | '/roles'
+    | '/skill-gaps'
+    | '/skills'
+    | '/training'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssessmentRoute: typeof AssessmentRoute
+  DashboardRoute: typeof DashboardRoute
+  DepartmentsRoute: typeof DepartmentsRoute
+  EmployeesRoute: typeof EmployeesRoute
+  HeatmapRoute: typeof HeatmapRoute
+  ReportsRoute: typeof ReportsRoute
+  ReviewsRoute: typeof ReviewsRoute
+  RolesRoute: typeof RolesRoute
+  SkillGapsRoute: typeof SkillGapsRoute
+  SkillsRoute: typeof SkillsRoute
+  TrainingRoute: typeof TrainingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +195,100 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assessment': {
+      id: '/assessment'
+      path: '/assessment'
+      fullPath: '/assessment'
+      preLoaderRoute: typeof AssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/departments': {
+      id: '/departments'
+      path: '/departments'
+      fullPath: '/departments'
+      preLoaderRoute: typeof DepartmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees': {
+      id: '/employees'
+      path: '/employees'
+      fullPath: '/employees'
+      preLoaderRoute: typeof EmployeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/heatmap': {
+      id: '/heatmap'
+      path: '/heatmap'
+      fullPath: '/heatmap'
+      preLoaderRoute: typeof HeatmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roles': {
+      id: '/roles'
+      path: '/roles'
+      fullPath: '/roles'
+      preLoaderRoute: typeof RolesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skill-gaps': {
+      id: '/skill-gaps'
+      path: '/skill-gaps'
+      fullPath: '/skill-gaps'
+      preLoaderRoute: typeof SkillGapsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training': {
+      id: '/training'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssessmentRoute: AssessmentRoute,
+  DashboardRoute: DashboardRoute,
+  DepartmentsRoute: DepartmentsRoute,
+  EmployeesRoute: EmployeesRoute,
+  HeatmapRoute: HeatmapRoute,
+  ReportsRoute: ReportsRoute,
+  ReviewsRoute: ReviewsRoute,
+  RolesRoute: RolesRoute,
+  SkillGapsRoute: SkillGapsRoute,
+  SkillsRoute: SkillsRoute,
+  TrainingRoute: TrainingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

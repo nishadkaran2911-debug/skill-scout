@@ -19,6 +19,7 @@ import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as RolesRouteImport } from './routes/roles'
 import { Route as SkillGapsRouteImport } from './routes/skill-gaps'
 import { Route as SkillsRouteImport } from './routes/skills'
+import { Route as TrainingRouteImport } from './routes/training'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,6 +71,11 @@ const SkillsRoute = SkillsRouteImport.update({
   path: '/skills',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainingRoute = TrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/roles': typeof RolesRoute
   '/skill-gaps': typeof SkillGapsRoute
   '/skills': typeof SkillsRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/roles': typeof RolesRoute
   '/skill-gaps': typeof SkillGapsRoute
   '/skills': typeof SkillsRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/roles': typeof RolesRoute
   '/skill-gaps': typeof SkillGapsRoute
   '/skills': typeof SkillsRoute
+  '/training': typeof TrainingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/roles'
     | '/skill-gaps'
     | '/skills'
+    | '/training'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/roles'
     | '/skill-gaps'
     | '/skills'
+    | '/training'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/roles'
     | '/skill-gaps'
     | '/skills'
+    | '/training'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,6 +170,7 @@ export interface RootRouteChildren {
   RolesRoute: typeof RolesRoute
   SkillGapsRoute: typeof SkillGapsRoute
   SkillsRoute: typeof SkillsRoute
+  TrainingRoute: typeof TrainingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -232,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SkillsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/training': {
+      id: '/training'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -246,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   RolesRoute: RolesRoute,
   SkillGapsRoute: SkillGapsRoute,
   SkillsRoute: SkillsRoute,
+  TrainingRoute: TrainingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

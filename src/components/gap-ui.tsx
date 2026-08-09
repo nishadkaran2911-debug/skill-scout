@@ -20,7 +20,7 @@ export const STATUS_TEXT: Record<GapStatus, string> = {
   GREEN: "No Action",
 };
 
-export function StatusBadge({ status, label }: { status: GapStatus; label?: string }) {
+export function StatusBadge({ status, label }: { status: GapStatus; label?: string | undefined }) {
   return (
     <span
       className={cn(

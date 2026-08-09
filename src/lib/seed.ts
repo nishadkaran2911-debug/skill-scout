@@ -212,7 +212,7 @@ export function buildSeed(): DB {
   const roles: JobRole[] = ROLE_DEFS.map((r, i) => ({
     _id: `rl${i + 1}`,
     name: r.name,
-    departmentId: departments[r.dept]._id,
+    departmentId: departments[r.dept]!._id,
     description: r.desc,
     requiredSkills: r.skills.map(([sn, lvl]) => ({ skillId: skillByName.get(sn)!, requiredLevel: lvl })),
   }));
@@ -222,8 +222,8 @@ export function buildSeed(): DB {
     employeeCode: `EMP${String(i + 1).padStart(3, "0")}`,
     name,
     email: `${name.toLowerCase().split(" ").join(".")}@nexoracorp.com`,
-    departmentId: departments[dept]._id,
-    roleId: roles.find((r) => r.departmentId === departments[dept]._id)!._id,
+    departmentId: departments[dept]!._id,
+    roleId: roles.find((r) => r.departmentId === departments[dept]!._id)!._id,
     managerId: null,
     joiningDate: new Date(Date.UTC(2019 + (i % 6), (i * 3) % 12, ((i * 7) % 27) + 1)).toISOString(),
     status: "active",
@@ -232,8 +232,8 @@ export function buildSeed(): DB {
   // first employee of each department is the department manager
   departments.forEach((d) => {
     const team = employees.filter((e) => e.departmentId === d._id);
-    d.managerId = team[0]._id;
-    team.slice(1).forEach((e) => (e.managerId = team[0]._id));
+    d.managerId = team[0]!._id;
+    team.slice(1).forEach((e) => (e.managerId = team[0]!._id));
   });
 
   const users: User[] = [

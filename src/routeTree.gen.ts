@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as HeatmapRouteImport } from './routes/heatmap'
 import { Route as SkillGapsRouteImport } from './routes/skill-gaps'
@@ -17,6 +18,11 @@ import { Route as SkillGapsRouteImport } from './routes/skill-gaps'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssessmentRoute = AssessmentRouteImport.update({
+  id: '/assessment',
+  path: '/assessment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -37,12 +43,14 @@ const SkillGapsRoute = SkillGapsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
   '/dashboard': typeof DashboardRoute
   '/heatmap': typeof HeatmapRoute
   '/skill-gaps': typeof SkillGapsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
   '/dashboard': typeof DashboardRoute
   '/heatmap': typeof HeatmapRoute
   '/skill-gaps': typeof SkillGapsRoute
@@ -50,20 +58,23 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assessment': typeof AssessmentRoute
   '/dashboard': typeof DashboardRoute
   '/heatmap': typeof HeatmapRoute
   '/skill-gaps': typeof SkillGapsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/heatmap' | '/skill-gaps'
+  fullPaths: '/' | '/assessment' | '/dashboard' | '/heatmap' | '/skill-gaps'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard' | '/heatmap' | '/skill-gaps'
-  id: '__root__' | '/' | '/dashboard' | '/heatmap' | '/skill-gaps'
+  to: '/' | '/assessment' | '/dashboard' | '/heatmap' | '/skill-gaps'
+  id:
+    '__root__' | '/' | '/assessment' | '/dashboard' | '/heatmap' | '/skill-gaps'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssessmentRoute: typeof AssessmentRoute
   DashboardRoute: typeof DashboardRoute
   HeatmapRoute: typeof HeatmapRoute
   SkillGapsRoute: typeof SkillGapsRoute
@@ -76,6 +87,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assessment': {
+      id: '/assessment'
+      path: '/assessment'
+      fullPath: '/assessment'
+      preLoaderRoute: typeof AssessmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -104,6 +122,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssessmentRoute: AssessmentRoute,
   DashboardRoute: DashboardRoute,
   HeatmapRoute: HeatmapRoute,
   SkillGapsRoute: SkillGapsRoute,

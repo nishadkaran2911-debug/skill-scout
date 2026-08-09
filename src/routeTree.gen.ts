@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DepartmentsRouteImport } from './routes/departments'
 import { Route as EmployeesRouteImport } from './routes/employees'
 import { Route as HeatmapRouteImport } from './routes/heatmap'
 import { Route as ReviewsRouteImport } from './routes/reviews'
@@ -30,6 +31,11 @@ const AssessmentRoute = AssessmentRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DepartmentsRoute = DepartmentsRouteImport.update({
+  id: '/departments',
+  path: '/departments',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmployeesRoute = EmployeesRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assessment': typeof AssessmentRoute
   '/dashboard': typeof DashboardRoute
+  '/departments': typeof DepartmentsRoute
   '/employees': typeof EmployeesRoute
   '/heatmap': typeof HeatmapRoute
   '/reviews': typeof ReviewsRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assessment': typeof AssessmentRoute
   '/dashboard': typeof DashboardRoute
+  '/departments': typeof DepartmentsRoute
   '/employees': typeof EmployeesRoute
   '/heatmap': typeof HeatmapRoute
   '/reviews': typeof ReviewsRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/assessment': typeof AssessmentRoute
   '/dashboard': typeof DashboardRoute
+  '/departments': typeof DepartmentsRoute
   '/employees': typeof EmployeesRoute
   '/heatmap': typeof HeatmapRoute
   '/reviews': typeof ReviewsRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/assessment'
     | '/dashboard'
+    | '/departments'
     | '/employees'
     | '/heatmap'
     | '/reviews'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/assessment'
     | '/dashboard'
+    | '/departments'
     | '/employees'
     | '/heatmap'
     | '/reviews'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/assessment'
     | '/dashboard'
+    | '/departments'
     | '/employees'
     | '/heatmap'
     | '/reviews'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssessmentRoute: typeof AssessmentRoute
   DashboardRoute: typeof DashboardRoute
+  DepartmentsRoute: typeof DepartmentsRoute
   EmployeesRoute: typeof EmployeesRoute
   HeatmapRoute: typeof HeatmapRoute
   ReviewsRoute: typeof ReviewsRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/departments': {
+      id: '/departments'
+      path: '/departments'
+      fullPath: '/departments'
+      preLoaderRoute: typeof DepartmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/employees': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssessmentRoute: AssessmentRoute,
   DashboardRoute: DashboardRoute,
+  DepartmentsRoute: DepartmentsRoute,
   EmployeesRoute: EmployeesRoute,
   HeatmapRoute: HeatmapRoute,
   ReviewsRoute: ReviewsRoute,

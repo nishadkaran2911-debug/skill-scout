@@ -75,12 +75,12 @@ function HeatmapPage() {
       allow={["admin", "manager"]}
     >
       <div className="mb-4 flex flex-wrap items-center gap-4 text-xs">
-        {[
+        {([
           ["RED", "Gap ≥ 2 · Urgent Training"],
           ["YELLOW", "Gap = 1 · Monitor"],
           ["GREEN", "Gap = 0 · No Action"],
           ["NA", "Not assessed"],
-        ].map(([k, label]) => (
+        ] as const).map(([k, label]) => (
           <span key={k} className="inline-flex items-center gap-2">
             <span className={cn("size-3 rounded", CELL[k])} />
             {label}
